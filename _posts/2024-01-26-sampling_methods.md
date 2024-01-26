@@ -75,7 +75,9 @@ plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of exponential distribution')
 ```
-For the chosen parameters ($$n=5000$$ samples and $$100$$) we expect $$50$$ samples per bin. 
+For the chosen parameters ($$n=5000$$ samples and $$100$$) we expect $$50$$ samples per bin. As shown in the figure below we see the number of samples per bin fluctuate around 50. 
+
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/uniform_distribution.png?raw=true)
 
 
 
