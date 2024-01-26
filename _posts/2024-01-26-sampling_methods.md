@@ -50,19 +50,34 @@ Let's check this with an example. We use a uniform distribution with $\mathcal{N
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Generate samples from uniform distribution
+# Generate n samples from uniform distribution
 n = 1000
 np.random.seed(2) # set seed for pseudo random generator
 x = np.random.randn(n)
 
 # plot uniform samples
-plt.hist(x,bins=20)
+plt.figure(1)
+a = plt.hist(x,bins=100)
 plt.xlabel('x')
-plt.ylabel('y')
+plt.ylabel('frequency')
 plt.title('Histogram of normal distribution')
-plt.show()
 ```
 
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution.png?raw=true)
+
+Now let's look at the CDF. Since we work with $n$ samples drawn at random from the uniform distribution $\mathcal{N}(0,1)$ we can sum up the number of appearances of the samples per bin and 
+
+```Python
+# compute CDF
+y = np.append(0,np.cumsum(a[0])/n)
+# plot CDF
+plt.figure(2)
+plt.plot(a[1], y)
+plt.xlabel('x')
+plt.ylabel('F_X(x)')
+plt.title('CDF')
+```
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/CDF.png?raw=true)
 
 ## 2. Rejection Sampling
 
