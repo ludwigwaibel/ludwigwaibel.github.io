@@ -31,7 +31,7 @@ $$
 ## 1. Inverse Transform Sampling
 The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.\
 The method follows from the Probability Integral Transform: \
-Let $$X$$ be a random variable with continuous distribution and CDF $F_X(x)$ then the random variable $Y= F_X(x)$ has a standard uniform distribution.\
+Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution.\
 Proof:
   
 $$
@@ -44,7 +44,7 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 \end{align}
 $$
 
-Let's check this with an example. We use a uniform distribution with $\mathcal{N}(0,1)$.
+Let's check this with an example. We use a uniform distribution with $$\mathcal{N}(0,1)$$.
 ```Python
 # import some packages
 import numpy as np
@@ -65,7 +65,7 @@ plt.title('Histogram of normal distribution')
 
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution.png?raw=true)
 
-Now let's look at the CDF. Since we work with $n$ samples drawn at random from the uniform distribution $\mathcal{N}(0,1)$ we can sum up the number of appearances of the samples per bin and 
+Now let's look at the CDF. Since we work with $$n$$ samples drawn at random from the uniform distribution $$\mathcal{N}(0,1)$$ we can sum up the number of appearances of the samples per bin and divide by the total number of samples $$n$$ to compute the CDF. 
 
 ```Python
 # compute CDF
