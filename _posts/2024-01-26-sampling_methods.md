@@ -29,9 +29,11 @@ $$
   
 
 ## 1. Inverse Transform Sampling
-The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.\
-The method follows from the Probability Integral Transform: \
-Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution.\
+The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.
+
+### Probability Integral Transform
+The method follows directly from the Probability Integral Transform: \
+Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution, i.e. $$Y \tilde \mathcal{U}(0,1)$$. \
 Proof:
   
 $$
@@ -44,6 +46,7 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 \end{align}
 $$
 
+### 
 Let's check this with an example. We use a uniform distribution with $$\mathcal{N}(0,1)$$.
 ```Python
 # import some packages
