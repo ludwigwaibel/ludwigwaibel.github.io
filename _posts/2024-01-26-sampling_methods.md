@@ -32,7 +32,7 @@ $$
 The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.\
 The method follows from the Probability Integral Transform: \
 Let $X$ be a random variable with continuous distribution and CDF $F_X(x)$ then the random variable $Y= F_X(x)$ has a standard uniform distribution.\
-Proof:\
+Proof:
   
 $$
 \begin{align}
@@ -44,7 +44,24 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 \end{align}
 $$
 
-Let's check this with some examples:
+Let's check this with an example. We use a uniform distribution with $\mathcal{N}(0,1)$.
+```Python
+# import some packages
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate samples from uniform distribution
+n = 1000
+np.random.seed(2) # set seed for pseudo random generator
+x = np.random.randn(n)
+
+# plot uniform samples
+plt.hist(x,bins=20)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Histogram of normal distribution')
+plt.show()
+```
 
 
 ## 2. Rejection Sampling
