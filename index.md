@@ -13,3 +13,4 @@ This blog is a place where I'll share my thoughts on a variety of topics, includ
 I hope you'll join me on this journey of exploration and discovery. I'm always looking for new topics to discuss, so please feel free to leave me a comment or send me an email with your suggestions.
 
 Thank you for reading!
+Ludwig
