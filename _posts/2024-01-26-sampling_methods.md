@@ -30,10 +30,8 @@ $$
 
 ## 1. Inverse Transform Sampling
 The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.
-
-### Probability Integral Transform
 The method follows directly from the Probability Integral Transform: \
-Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution, i.e. $$Y \tilde \mathcal{U}(0,1)$$. \
+> Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution, i.e. $$\mathcal{U}(0,1)$$.\
 Proof:
   
 $$
