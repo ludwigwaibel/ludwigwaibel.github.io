@@ -49,33 +49,41 @@ $$
 ### Example:
 Let's check the inverse transform sampling with an exponential distribution. The CDF is given by $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ and the inverse by $$F^{-1}(x|\lambda) = -\frac{log(1-u)}{\lambda} $$ for $$x\geq 0$$. By taking samples from $$\mathcal{U}(0,1)$$ we now can generate samples from the exponential distribution. 
 ```Python
+# import libraries
 import numpy as np
 import matplotlib.pyplot as plt
 
-# lambda
-lmbd = 0.5
+# set parameters
+lmbd = 0.75 # lambda for the exponential distribution
+n = 5000 # number of samples to draw
+bins = 50 # number of bins for the histogram
+x = np.linspace(0,20,1000) # to plot the expected curves
+np.random.seed(0) # set seed of pseudo random generator
 
-# generate samples
-n = 5000
-np.random.seed(0)
+# generate uniform samples
 samples_uniform = np.random.rand(n)
-samples_exponential = -1/lmbd*np.log(1-samples_uniform)
 
 #check uniform distribution
 plt.figure(0)
-plt.hist(samples_uniform, bins=100)
+plt.hist(samples_uniform, bins=bins)
+plt.plot(np.linspace(0,1,1000),n/bins*np.ones(1000), color="orange") # what we expect
 plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of uniform distribution')
 
+
+# apply inverse transform sampling 
+samples_exponential = -1/lmbd*np.log(1-samples_uniform)
+
 #check exponential distribution
 plt.figure(1)
-plt.hist(samples_exponential, bins=100)
+plt.hist(samples_exponential, density=True ,bins=bins)
+plt.plot(x,lmbd*np.exp(-lmbd*x), color="orange") # what we expect
 plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of exponential distribution')
 ```
-For the chosen parameters ($$n=5000$$ samples and $$100$$) we expect $$50$$ samples per bin. As shown in the figure below we see the number of samples per bin fluctuate around 50. 
+For the chosen parameters ($$n=5000$$ samples and $$bins=50$$) we expect $$100$$ samples per bin. As shown in the figure below we see the expected number of samples per bin in orange and the actual number of samples per bin fluctuating around this line. 
 
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/uniform_distribution.png?raw=true)
 
