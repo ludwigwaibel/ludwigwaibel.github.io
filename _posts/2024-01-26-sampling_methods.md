@@ -30,8 +30,10 @@ $$
 
 ## 1. Inverse Transform Sampling
 The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.
-The method follows directly from the Probability Integral Transform: \
-> Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution, i.e. $$Y \sim \mathcal{U}(0,1)$$.\
+The method follows directly from the Probability Integral Transform: 
+
+> Let $$X$$ be a random variable with continuous distribution and CDF $$F_X(x)$$ then the random variable $$Y= F_X(x)$$ has a standard uniform distribution, i.e. $$Y \sim \mathcal{U}(0,1)$$.
+
 Proof:
   
 $$
@@ -44,7 +46,7 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 \end{align}
 $$
 
-Let's check this with an example. We use a uniform distribution with $$\mathcal{N}(0,1)$$.
+Let's check this with an example. We draw $$n$$ samples from a uniform distribution with $$\mathcal{N}(0,1)$$ and plot the frequencies of the appearances in a histogram:
 ```Python
 # import some packages
 import numpy as np
@@ -57,7 +59,7 @@ x = np.random.randn(n)
 
 # plot uniform samples
 plt.figure(1)
-a = plt.hist(x,bins=100)
+binning = plt.hist(x,bins=100)
 plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of normal distribution')
@@ -69,15 +71,27 @@ Now let's look at the CDF. Since we work with $$n$$ samples drawn at random from
 
 ```Python
 # compute CDF
-y = np.append(0,np.cumsum(a[0])/n)
+y = np.append(0,np.cumsum(binning[0])/n)
 # plot CDF
 plt.figure(2)
-plt.plot(a[1], y)
+plt.plot(binning[1], y)
 plt.xlabel('x')
 plt.ylabel('F_X(x)')
 plt.title('CDF')
 ```
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/CDF.png?raw=true)
+
+
+Let's check the inverse transform sampling with an exponential distribution. The CDF is given by 
+
+$$
+F(x|\lambda) = \left\{\begin{array}{ll}
+1-\exp^{-\lambda x} & x\geq 0,\\
+0 &\ x < 0
+\end{array}\right. 
+$$
+
+
 
 ## 2. Rejection Sampling
 
