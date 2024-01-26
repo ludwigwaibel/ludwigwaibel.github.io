@@ -46,50 +46,36 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 \end{align}
 $$
 
-Let's check this with an example. We draw $$n$$ samples from a uniform distribution with $$\mathcal{N}(0,1)$$ and plot the frequencies of the appearances in a histogram:
+### Example:
+Let's check the inverse transform sampling with an exponential distribution. The CDF is given by $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ and the inverse by $$F^{-1}(x|\lambda) = -\frac{log(1-u)}{\lambda} $$ for $$x\geq 0$$. By taking samples from $$\mathcal{U}(0,1)$$ we now can generate samples from the exponential distribution. 
 ```Python
-# import some packages
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Generate n samples from uniform distribution
-n = 1000
-np.random.seed(2) # set seed for pseudo random generator
-x = np.random.randn(n)
+# lambda
+lmbd = 0.5
 
-# plot uniform samples
-plt.figure(1)
-binning = plt.hist(x,bins=100)
+# generate samples
+n = 5000
+np.random.seed(0)
+samples_uniform = np.random.rand(n)
+samples_exponential = -1/lmbd*np.log(1-samples_uniform)
+
+#check uniform distribution
+plt.figure(0)
+plt.hist(samples_uniform, bins=100)
 plt.xlabel('x')
 plt.ylabel('frequency')
-plt.title('Histogram of normal distribution')
-```
+plt.title('Histogram of uniform distribution')
 
-![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution.png?raw=true)
-
-Now let's look at the CDF. Since we work with $$n$$ samples drawn at random from the uniform distribution $$\mathcal{N}(0,1)$$ we can sum up the number of appearances of the samples per bin and divide by the total number of samples $$n$$ to compute the CDF. 
-
-```Python
-# compute CDF
-y = np.append(0,np.cumsum(binning[0])/n)
-# plot CDF
-plt.figure(2)
-plt.plot(binning[1], y)
+#check exponential distribution
+plt.figure(1)
+plt.hist(samples_exponential, bins=100)
 plt.xlabel('x')
-plt.ylabel('F_X(x)')
-plt.title('CDF')
+plt.ylabel('frequency')
+plt.title('Histogram of exponential distribution')
 ```
-![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/CDF.png?raw=true)
-
-
-Let's check the inverse transform sampling with an exponential distribution. The CDF is given by 
-
-$$
-F(x|\lambda) = \left\{\begin{array}{ll}
-1-\exp^{-\lambda x} & x\geq 0,\\
-0 &\ x < 0
-\end{array}\right. 
-$$
+For the chosen parameters ($$n=5000$$ samples and $$100$$) we expect $$50$$ samples per bin. 
 
 
 
