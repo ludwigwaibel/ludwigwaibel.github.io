@@ -83,10 +83,12 @@ plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of exponential distribution')
 ```
-With a histogram plot, we count the number of appearances of samples within one bin, where the bins have a equal length. As shown in the figure below we see the expected number of samples per bin in orange and the actual number of samples per bin fluctuating around this line. For the chosen parameters ($$n=5000$$ samples and $$bins=50$$) we expect $$100$$ samples per bin.
+With a histogram plot, we count the number of appearances of samples within one bin, where the bins have an equal length. As shown in the figure below we see the expected number of samples per bin in orange and the actual number of samples per bin fluctuating around this line. For the chosen parameters ($$n=5000$$ samples and $$bins=50$$) we expect $$100$$ samples per bin.
+
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/uniform_distribution.png?raw=true)
 
 Now we plot the inverse transformed samples in a histogram and compare the distribution with the expected exponential probability density function. Looks quite the same, congrats you just generated exponential distributed samples from a standard uniform distribution $$\mathcal{U}(0,1)$$.
+
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/exponential_distribution.png?raw=true)
 
 
