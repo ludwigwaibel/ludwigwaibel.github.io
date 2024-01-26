@@ -1,12 +1,12 @@
 # Sampling Methods
 
-Today I want to present different methods for sampling numbers at random from any probability distribution only using a uniform distribution over $[0, 1)$ with the `numpy.random.rand` function. But let's start with the basics.
+Today I want to present different methods for sampling numbers at random from any probability distribution only using a uniform distribution over $$[0, 1)$$ with the `numpy.random.rand` function. But let's start with the basics.
 
 ## 0. Definitions
 First I'll give you some definitions used in this post real quick.
 
 - Probability: \
-Let $S$ be a sample space, $\mathcal{B}$ a sigma algebra, and $P$ a probability function. Then $P$ satisfies:
+Let $$S$$ be a sample space, $$\mathcal{B}$$ a sigma algebra, and $$P$$ a probability function. Then $$P$$ satisfies:
 
 $$ 
 \begin{align}
@@ -31,7 +31,7 @@ $$
 ## 1. Inverse Transform Sampling
 The inverse transform sampling is a basic method for pseudo-random number sampling, i.e., for generating sample numbers at random from any probability distribution given its cumulative distribution function.\
 The method follows from the Probability Integral Transform: \
-Let $X$ be a random variable with continuous distribution and CDF $F_X(x)$ then the random variable $Y= F_X(x)$ has a standard uniform distribution.\
+Let $$X$$ be a random variable with continuous distribution and CDF $F_X(x)$ then the random variable $Y= F_X(x)$ has a standard uniform distribution.\
 Proof:
   
 $$
