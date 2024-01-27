@@ -26,6 +26,17 @@ $$
 $$
 F_X(x) = \int_{-\infty}^x f_X(t) dt
 $$
+
+- Uniform distribution $$\mathcal(U)(a,b)$$:
+  PDF: $$ f(x) = \frac{1}{b-a}$$ for $$x \in [a,b]$$ else $$f(x) = 0$$
+  CDF: $$ F(x) = 0$$ for $$ x < a$$, $$F(x) = \frac{x-a}{b-a}$$ for $$x \in [a,b]$$, $$F(x) = 1$$ for $$x>b$$
+- Exponential distribution:
+  PDF:$$f(x|\lambda) = \lambda \exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
+  CDF: $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
+- Normal distribution $$\mathcal(N)(\mu,\sigma)$$:
+  PDF: $$f(x|\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp^{-\frac{1}{2} (\frac{x-\mu}{\sigma})^2 }$$
+  CDF: $$\Phi(x) = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$
+
   
 
 ## 1. Inverse Transform Sampling
@@ -47,7 +58,7 @@ P(Y \leq y) & = P(F_X(X) \leq y) \\
 $$
 
 ### Example 1 - Exponential distribution:
-Let's check the inverse transform sampling with an exponential distribution. The CDF is given by $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ and the inverse by $$F^{-1}(x|\lambda) = -\frac{log(1-u)}{\lambda} $$ for $$x\geq 0$$. By taking samples from $$\mathcal{U}(0,1)$$ we now can generate samples from the exponential distribution. 
+Let's check the inverse transform sampling with an exponential distribution. The CDF is given by $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ and hence the inverse by $$F^{-1}(x|\lambda) = -\frac{log(1-u)}{\lambda} $$ for $$x\geq 0$$. By taking samples from $$\mathcal{U}(0,1)$$ we now can generate samples from the exponential distribution. 
 ```python
 # import libraries
 import numpy as np
@@ -92,7 +103,7 @@ Now we plot the inverse transformed samples in a histogram and compare the distr
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/exponential_distribution.png?raw=true)
 
 ### Example 2 - Normal distribution:
-Ok, that was easy, but how would you deal with a normal distribution? The normal distribution with CDF $$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$ has no closed-form expression for the inverse CDF. But we can use the *percent point function* from the `scipy.stats` package to generate normal distributed samples. 
+Ok, that was easy, but how would you deal with a normal distribution? The normal distribution has no closed-form expression for the inverse CDF. But we can use the *percent point function* from the `scipy.stats` package to generate normal distributed samples. 
 
 ```pyhton
 from scipy.stats import norm
