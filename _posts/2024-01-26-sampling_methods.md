@@ -87,13 +87,12 @@ With a histogram plot, we count the number of appearances of samples within one 
 
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/uniform_distribution.png?raw=true)
 
-Now we plot the inverse transformed samples in a histogram and compare the distribution with the expected exponential probability density function. Looks quite the same, congrats you just generated exponential distributed samples from a standard uniform distribution $$\mathcal{U}(0,1)$$.
+Now we plot the inverse transformed samples in a histogram and compare the distribution with the expected exponential probability density function shown in orange in the figure below. Looks quite the same, congrats you just generated exponentially distributed samples from a standard uniform distribution $$\mathcal{U}(0,1)$$.
 
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/exponential_distribution.png?raw=true)
 
-
-
-
+### Example 2 - Normal distribution:
+Ok, that was easy, but how would you deal with a normal distribution? The normal distribution with CDF $$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t²/2} dt $$ has no closed-form expression for the inverse CDF.  
 
 ## 2. Rejection Sampling
 
