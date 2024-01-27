@@ -1,6 +1,6 @@
 # Sampling Methods
 
-Today I want to present different methods for sampling numbers at random from any probability distribution only using a uniform distribution with the `numpy.random.rand` function. 
+Today I want to present different two methods for sampling numbers at random from any probability distribution only using a uniform distribution with the `numpy.random.rand` function. 
 
 ## 0. Definitions
 First, let's define some basic statistic nomenclature for this post.
