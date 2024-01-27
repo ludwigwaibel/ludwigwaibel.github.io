@@ -181,6 +181,6 @@ Looks ok, but not as close as the other histogram plots. This is because we just
 
 The number of samples decreasing to some unforeseen amount is one major drawback of the rejection sampling method. The number will even further decrease if the initial scaling is not set properly. Let's try to increase the initial number of two-dimensional samples to $$n=5000$$ and plot the histogram. Now it looks quite nice.
 
-![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_samping_n_5000.png?raw=true)
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_sampling_n_5000.png?raw=true)
 
 
