@@ -48,7 +48,7 @@ $$
 
 ### Example 1 - Exponential distribution:
 Let's check the inverse transform sampling with an exponential distribution. The CDF is given by $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ and the inverse by $$F^{-1}(x|\lambda) = -\frac{log(1-u)}{\lambda} $$ for $$x\geq 0$$. By taking samples from $$\mathcal{U}(0,1)$$ we now can generate samples from the exponential distribution. 
-```Python
+```python
 # import libraries
 import numpy as np
 import matplotlib.pyplot as plt
@@ -66,7 +66,7 @@ samples_uniform = np.random.rand(n)
 #check uniform distribution
 plt.figure(0)
 plt.hist(samples_uniform, bins=bins)
-plt.plot(np.linspace(0,1,1000),n/bins*np.ones(1000), color="orange") # what we expect
+plt.plot(np.linspace(0,1,1000),n/bins*np.ones(1000), color="orange") # what we expect, i.e. the PDF of the uniform distribution
 plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of uniform distribution')
@@ -78,7 +78,7 @@ samples_exponential = -1/lmbd*np.log(1-samples_uniform)
 #check exponential distribution
 plt.figure(1)
 plt.hist(samples_exponential, density=True ,bins=bins)
-plt.plot(x,lmbd*np.exp(-lmbd*x), color="orange") # what we expect
+plt.plot(x,lmbd*np.exp(-lmbd*x), color="orange") # what we expect, i.e. the PDF of the exponential distribution
 plt.xlabel('x')
 plt.ylabel('frequency')
 plt.title('Histogram of exponential distribution')
@@ -92,7 +92,23 @@ Now we plot the inverse transformed samples in a histogram and compare the distr
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/exponential_distribution.png?raw=true)
 
 ### Example 2 - Normal distribution:
-Ok, that was easy, but how would you deal with a normal distribution? The normal distribution with CDF $$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t²/2} dt $$ has no closed-form expression for the inverse CDF.  
+Ok, that was easy, but how would you deal with a normal distribution? The normal distribution with CDF $$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$ has no closed-form expression for the inverse CDF. But we can use the *percent point function* from the `scipy.stats` package to generate normal distributed samples. 
+
+```pyhton
+
+from scipy.stats import norm
+samples_normal = norm.ppf(samples_uniform) # apply inverse transform sampling
+
+x = np.linspace(-5,5,1000) # to plot the expected curves
+plt.figure(4)
+plt.hist(samples_normal,density=True, bins=bins)
+plt.plot(x,1/(np.sqrt(2*np.pi))*np.exp(-np.square(x)/2), color="orange") # what we expect, i.e. the PDF of the normal distribution
+plt.xlabel('x')
+plt.ylabel('frequency')
+plt.title('Histogram of normal distribution')
+```
+By plotting the histogram of the generated samples as shown below we see that the generated samples follow a standard normal distribution $$\mathcal{N}(0,1)$$ (in orange). 
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution.png?raw=true)
 
 ## 2. Rejection Sampling
 
