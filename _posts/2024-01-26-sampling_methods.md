@@ -31,11 +31,11 @@ $$
   - PDF: $$ f(x) = \frac{1}{b-a}$$ for $$x \in [a,b]$$ else $$f(x) = 0$$ 
   - CDF: $$ F(x) = 0$$ for $$ x < a$$, $$F(x) = \frac{x-a}{b-a}$$ for $$x \in [a,b]$$, $$F(x) = 1$$ for $$x>b$$
 - Exponential distribution: 
-  - PDF: $$f(x|\lambda) = \lambda \exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
+  - PDF: $$ f(x|\lambda) = \lambda \exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
   - CDF: $$ F(x|\lambda) = 1-\exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
 - Normal distribution $$\mathcal{N}(\mu,\sigma)$$: 
-  - PDF: $$f(x|\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp^{-\frac{1}{2} (\frac{x-\mu}{\sigma})^2 }$$ 
-  - CDF: $$\Phi(x) = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$
+  - PDF: $$ f(x|\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp^{-\frac{1}{2} (\frac{x-\mu}{\sigma})^2 }$$ 
+  - CDF: $$ \Phi(x) = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$
 
   
 
