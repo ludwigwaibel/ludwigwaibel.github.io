@@ -162,7 +162,7 @@ plt.title('Rejection sampling of normal distribution')
 
 In the below figure, the accepted samples are shown in green, and the rejected ones are in red. 
 
-![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/rejection_samping.png?raw=true)
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/rejection_sampling.png?raw=true)
 
 Taking the accepted samples and plotting the historam to check for the normal distribution:
 
@@ -177,7 +177,7 @@ plt.title('Histogram of normal distribution by rejection sampling')
 ```
 Looks ok, but not as close as the other histogram plots. This is because we just got $$209$$ accepted samples.
 
-![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_samping.png?raw=true)
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_sampling.png?raw=true)
 
 The number of samples decreasing to some unforeseen amount is one major drawback of the rejection sampling method. The number will even further decrease if the initial scaling is not set properly. Let's try to increase the initial number of two-dimensional samples to $$n=5000$$ and plot the histogram. Now it looks quite nice.
 
