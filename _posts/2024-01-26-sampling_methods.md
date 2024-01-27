@@ -108,9 +108,68 @@ plt.ylabel('frequency')
 plt.title('Histogram of normal distribution')
 ```
 By plotting the histogram of the generated samples as shown below we see that the generated samples follow a standard normal distribution $$\mathcal{N}(0,1)$$ (in orange). 
+
 ![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution.png?raw=true)
 
 ## 2. Rejection Sampling
+Instead of dealing with this percent point function from the last example, we can also use another method called rejection sampling. This method uses a uniform sampling of the two-dimensional space and keeps the samples below the PDF. 
 
+### Example 1 - Normal distribution:
+
+First, we sample the x-dimension again with $$\mathcal{U}(0,1)$$ and scale the samples to reach values from $$(a,b)$$. Second, we sample the y-dimension also with $$\mathcal{U}(0,1)$$ and now scale it to a range of $$(0,y_{max})$$. By applying the scaling we ensure samples cover the two-dimensional space sufficient for a standard uniform distribution. Note, that the 2-dimensional space is not sampled homogeneously by the scaling, but this shouldn't be a problem since we're just accepting the right samples. 
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# set parameters
+n = 1000
+a = -5
+b = 5
+y_max = 0.5
+
+# 2D sampling of the space
+x_samples = (b-a)*np.random.rand(n) + a
+y_samples = y_max*np.random.rand(n)
+
+# check for acceptance
+accept = np.zeros(n,dtype=bool)
+for i in range(n):
+    if y_samples[i] <= 1/(np.sqrt(2*np.pi))*np.exp(-np.square(x_samples[i])/2):
+        accept[i] = True
+
+# plot rejection sampling results
+x = np.linspace(a,b,1000) # to plot the expected curves
+plt.figure(5)
+plt.plot(x,1/(np.sqrt(2*np.pi))*np.exp(-np.square(x)/2), color="orange") # what we expect, i.e. the PDF
+plt.plot(x_samples[accept],y_samples[accept],'.',color='green') # the samples we keep
+plt.plot(x_samples[np.invert(accept)],y_samples[np.invert(accept)],'x', color='red') # the samples we discard
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Rejection sampling of normal distribution')
+```
+
+In the below figure, the accepted samples are shown in green, and the rejected ones are in red. 
+
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/rejection_samping.png?raw=true)
+
+Taking the accepted samples and plotting the historam to check for the normal distribution:
+
+```python
+samples_normal = x_samples[accept]
+plt.figure(6)
+plt.hist(samples_normal,density=True, bins=bins)
+plt.plot(x,1/(np.sqrt(2*np.pi))*np.exp(-np.square(x)/2), color="orange") # what we expect
+plt.xlabel('x')
+plt.ylabel('frequency')
+plt.title('Histogram of normal distribution by rejection sampling')
+```
+Looks ok, but not as close as the other histogram plots. This is because we just got $$209$$ accepted samples.
+
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_samping.png?raw=true)
+
+The number of samples decreasing to some unforeseen amount is one major drawback of the rejection sampling method. The number will even further decrease if the initial scaling is not set properly. Let's try to increase the initial number of two-dimensional samples to $$n=5000$$ and plot the histogram. Now it looks quite nice.
+
+![alt text](https://github.com/ludwigwaibel/ludwigwaibel.github.io/blob/main/_img/sampling/normal_distribution_rejection_samping_n_5000.png?raw=true)
 
 
