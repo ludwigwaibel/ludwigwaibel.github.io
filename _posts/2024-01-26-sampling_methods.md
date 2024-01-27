@@ -1,27 +1,19 @@
 # Sampling Methods
 
-Today I want to present different methods for sampling numbers at random from any probability distribution only using a uniform distribution with the `numpy.random.rand` function. But let's start with the basics.
+Today I want to present different methods for sampling numbers at random from any probability distribution only using a uniform distribution with the `numpy.random.rand` function. 
 
 ## 0. Definitions
-First I'll give you some definitions used in this post real quick.
+First, let's define some basic statistic nomenclature for this post.
 
-- Probability: \
-Let $$S$$ be a sample space, $$\mathcal{B}$$ a sigma algebra, and $$P$$ a probability function. Then $$P$$ satisfies:
-
-$$ 
-\begin{align}
-& P(A) \leq 1 \quad \forall A \in \mathcal{B}\\
-& P(S) = 1\\
-& A_1, A_2,... \in \mathcal{B} \text{ disjoint } \Rightarrow P\left(\bigcup_{i = 1}^\infty A_i \right) = \sum_{i=1}	^\infty P(A_i)
-\end{align}
-$$
-- Cumulative distribution function (CDF):
+- Probability: Let $$P$$ denote a probability function
+- Random variable: Let $$X$$ denote a random variable. 
+- Cumulative distribution function (CDF): Let the CDF be denoted by: 
   
 $$
 F_X(x) = P_X(X \leq x) \quad \forall x
 $$
 
-- Probability density function (PDF):
+- Probability density function (PDF): Let the PDF be denoted by: 
 
 $$
 F_X(x) = \int_{-\infty}^x f_X(t) dt
@@ -35,7 +27,7 @@ $$
   - CDF: $$ F(x, \lambda) = 1-\exp^{-\lambda x}$$ for $$x\geq 0$$, else $$F(x\lambda) = 0$$ 
 - Normal distribution $$\mathcal{N}(\mu,\sigma)$$: 
   - PDF: $$ f(x, \mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp^{-\frac{1}{2} (\frac{x-\mu}{\sigma})^2}$$ 
-  - CDF: $$ \Phi(x) = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt$$
+  - CDF: $$ F(x, \mu,\sigma) = \Phi(\frac{x-\mu}{\sigma}) $$, where $$ \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt$$
 
   
 
