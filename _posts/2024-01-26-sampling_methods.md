@@ -95,7 +95,6 @@ Now we plot the inverse transformed samples in a histogram and compare the distr
 Ok, that was easy, but how would you deal with a normal distribution? The normal distribution with CDF $$\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp^{-t^2/2} dt $$ has no closed-form expression for the inverse CDF. But we can use the *percent point function* from the `scipy.stats` package to generate normal distributed samples. 
 
 ```pyhton
-
 from scipy.stats import norm
 samples_normal = norm.ppf(samples_uniform) # apply inverse transform sampling
 
@@ -116,7 +115,8 @@ Instead of dealing with this percent point function from the last example, we ca
 
 ### Example 1 - Normal distribution:
 
-First, we sample the x-dimension again with $$\mathcal{U}(0,1)$$ and scale the samples to reach values from $$(a,b)$$. Second, we sample the y-dimension also with $$\mathcal{U}(0,1)$$ and now scale it to a range of $$(0,y_{max})$$. By applying the scaling we ensure samples cover the two-dimensional space sufficient for a standard uniform distribution. Note, that the 2-dimensional space is not sampled homogeneously by the scaling, but this shouldn't be a problem since we're just accepting the right samples. 
+First, we sample the x-dimension again with $$\mathcal{U}(0,1)$$ and scale the samples to reach values from $$(a,b)$$. Second, we sample the y-dimension also with $$\mathcal{U}(0,1)$$ and now scale it to a range of $$(0,y_{max})$$.\
+By applying the scaling we ensure samples cover the two-dimensional space sufficient for a standard uniform distribution. Note, that the 2-dimensional space is not sampled homogeneously by the scaling, but this shouldn't be a problem since we're just accepting the right samples. 
 
 ```python
 import numpy as np
